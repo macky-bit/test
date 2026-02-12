@@ -7,7 +7,7 @@
 <body>
 <h2>Add Student</h2>
 <form method="post" action="add_student.php">
-<input type="text" name="full_name" placeholder="Full Name"
+<input type="text" name="full_name" autocomplete="name" placeholder="Full Name"
 required><br>
 <select name="course" required>
 <option value="" selected hidden>Select Course</option>
@@ -28,16 +28,18 @@ required><br>
 <option value="3rd">3rd Year</option>
 <option value="4th">4th Year</option>
 </select><br>
-<input type="email" name="email" placeholder="Email"><br><br>
+
+<label for="email"><span style="color: red;">*</span> Email</label><br>
+<input type="email" id="email" name="email" required autocomplete="email" placeholder="example@domain.com" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g., user@example.com)"><br><br>
 <button type="submit">Save</button>
 </form>
 
-<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-<h2 style="margin: 0;">Student List</h2>
+<div class="search-header">
+<h2>Student List</h2>
 <form method="get" action="index.php" class="search-form">
-<div style="position: relative; display: flex; align-items: center;">
-<input type="text" name="search" placeholder="Search by Student No, Name, Course, or Email" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" style="width: 350px; padding-right: 45px;">
-<button type="submit" style="position: absolute; right: 5px; background: none; border: none; cursor: pointer; padding: 8px; color: #667eea;">🔍</button>
+<div class="search-input-wrapper">
+<input type="text" name="search" placeholder="Search by Student No, Name, Course, or Email" value="<?= isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>">
+<button type="submit" class="search-btn">🔍</button>
 </div>
 </form>
 </div>

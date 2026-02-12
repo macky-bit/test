@@ -1,13 +1,17 @@
 <?php
 include 'config.php';
 
+if (empty($_POST['full_name']) || empty($_POST['course']) || empty($_POST['year_level']) || empty($_POST['email'])) {
+    die("All fields are required. <a href='index.php'>Back</a>");
+}
+
 // Get year level and convert to year code
 $year_level = $_POST['year_level'];
 $year_map = array(
-    '1st' => 241,
-    '2nd' => 242,
-    '3rd' => 243,
-    '4th' => 244
+    '1st' => 244,
+    '2nd' => 243,
+    '3rd' => 242,
+    '4th' => 241
 );
 $year_code = $year_map[$year_level];
 
